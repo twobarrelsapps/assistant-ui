@@ -11,6 +11,7 @@ export namespace AssistantModalPrimitiveContent {
     typeof PopoverPrimitive.Content
   > & {
     dissmissOnInteractOutside?: boolean | undefined;
+    container?: HTMLElement | null | undefined;
   };
 }
 
@@ -25,6 +26,7 @@ export const AssistantModalPrimitiveContent = forwardRef<
       align,
       onInteractOutside,
       dissmissOnInteractOutside = false,
+      container,
       ...props
     }: ScopedProps<AssistantModalPrimitiveContent.Props>,
     forwardedRef,
@@ -32,7 +34,7 @@ export const AssistantModalPrimitiveContent = forwardRef<
     const scope = usePopoverScope(__scopeAssistantModal);
 
     return (
-      <PopoverPrimitive.Portal {...scope}>
+      <PopoverPrimitive.Portal {...scope} container={container}>
         <PopoverPrimitive.Content
           {...scope}
           {...props}
